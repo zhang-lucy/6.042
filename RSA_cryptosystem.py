@@ -39,7 +39,8 @@ def generateE(p,q):
 
 print(generateE(11,13))
 
-class Receiver:
+class Sender:
+    #Public Key is (e,n) where n=p*q
     def __init__(self, p, q, e):
         self.p=p
         self.q=q
@@ -51,19 +52,36 @@ class Receiver:
         if not isPrime(q):
             print("Error: "+str(q) +" is not prime.")
         if (gcd(e,((p-1)*(q-1)))==1):
-            print("Public Key is ("+self(e)+", "+self(n)+")")
+            print("Public Key is ("+str(self.e)+", "+str(self.n)+")")
         else:
             print("Error: gcd(e,((p-1)*(q-1)))==1 is not true")
-
     def getP(self):
         return self.p
     def getQ(self):
         return self.q
+    def getE(self):
+        return self.e
     def getPublicKey(self):
         return self.e
     def getN(self):
         return self.n
+    def encrypt(self,message):
+        encryptedMessage=""
+        return encryptedMessage
 
-#r1=Receiver(11,13)
-#print(r1.getP())
+
+class Receiver:
+    def __init__(self, key):
+        self.key=key
+        self.e=key[0]
+        self.n=key[1]
+    def decode(self):
+        decodedMessage=""
+        return decodedMessage
+
+s1=Sender(11,13,17)
+print(s1.getP())
+print(s1.getQ())
+print(s1.getE())
+print(s1.getN())
 
